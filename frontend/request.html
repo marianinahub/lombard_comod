@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Заявка</title>
+</head>
+
+<body>
+
+<h1>Заявка на позику</h1>
+
+<input id="item" placeholder="Що здаєте">
+<br><br>
+
+<input id="price" type="number" placeholder="Сума">
+<br><br>
+
+<button onclick="send()">Відправити заявку</button>
+
+<p id="result"></p>
+
+<script>
+
+async function send(){
+
+  const item = document.getElementById("item").value
+  const price = document.getElementById("price").value
+  const user = localStorage.getItem("user")
+
+  const response = await fetch("/api/request",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify({user,item,price})
+  })
+
+  const data = await response.json()
+
+  document.getElementById("result").innerText = data.message
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Кабінет</title>
+</head>
+
+<body>
+
+<h1>Кабінет клієнта</h1>
+
+<p id="user"></p>
+
+<script>
+
+const user = localStorage.getItem("user")
+
+document.getElementById("user").innerText = "Ви увійшли як: " + user
+
+</script>
+<br><br>
+
+<a href="request.html">Створити заявку</a>
+</body>
+</html>

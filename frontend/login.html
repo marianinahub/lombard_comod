@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Вхід</title>
+</head>
+
+<body>
+
+<h1>Вхід</h1>
+
+<input id="email" placeholder="Email">
+<br><br>
+
+<input id="password" type="password" placeholder="Password">
+<br><br>
+
+<button onclick="login()">Увійти</button>
+
+<p id="result"></p>
+
+<script>
+
+async function login(){
+
+  const email = document.getElementById("email").value
+  const password = document.getElementById("password").value
+
+  const response = await fetch("/api/login",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify({email,password})
+  })
+
+  const data = await response.json()
+
+  document.getElementById("result").innerText = data.message
+
+  if(data.email){
+    localStorage.setItem("user", data.email)
+    window.location.href = "cabinet.html"
+  }
+
+}
+
+</script>
+
+</body>
+</html>

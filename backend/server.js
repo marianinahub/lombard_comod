@@ -1,3 +1,7 @@
+const Stripe = require("stripe")
+
+const stripe = Stripe("YOUR_STRIPE_SECRET_KEY")
+
 const express = require("express")
 const path = require("path")
 const mongoose = require("mongoose")
@@ -114,16 +118,22 @@ app.post("/api/request/status", async (req,res)=>{
 
 // ---------- PRODUCTS ----------
 
-// додати товар
+// додати товар (з фото або без)
 app.post("/api/product", upload.single("image"), async (req,res)=>{
 
   const { name, price, description } = req.body
+
+  let image = ""
+
+  if(req.file){
+    image = "/uploads/" + req.file.filename
+  }
 
   const product = new Product({
     name,
     price,
     description,
-    image: "/uploads/" + req.file.filename
+    image
   })
 
   await product.save()
@@ -137,6 +147,16 @@ app.get("/api/products", async (req,res)=>{
   const products = await Product.find()
 
   res.json(products)
+})
+
+// видалити товар
+app.delete("/api/product/:id", async (req,res)=>{
+
+  const id = req.params.id
+
+  await Product.findByIdAndDelete(id)
+
+  res.json({message:"Товар видалено"})
 })
 
 // ---------- STATS ----------
@@ -160,6 +180,28 @@ app.get("/api/stats", async (req,res)=>{
 
 })
 
+// ---------- USERS ----------
+
+app.get("/api/users", async (req,res)=>{
+
+  const users = await User.find()
+
+  res.json(users)
+
+})
+
+// ---------- CLIENT REQUESTS ----------
+
+app.get("/api/my-requests/:user", async (req,res)=>{
+
+  const user = req.params.user
+
+  const requests = await Request.find({user})
+
+  res.json(requests)
+
+})
+
 // ---------- CREATE ADMIN ----------
 
 app.get("/create-admin", async (req,res)=>{
@@ -180,4 +222,20 @@ app.get("/create-admin", async (req,res)=>{
 
 app.listen(3000, ()=>{
   console.log("Server running on http://127.0.0.1:3000")
+})
+
+app.post("/api/pay", async (req,res)=>{
+
+  const { amount } = req.body
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount * 100,
+    currency: "uah",
+    payment_method_types: ["card"]
+  })
+
+  res.json({
+    clientSecret: paymentIntent.client_secret
+  })
+
 })

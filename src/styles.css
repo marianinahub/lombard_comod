@@ -1,0 +1,274 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+  body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, #ffffff, #f6f9fc);
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== SECTION ===== */
+.section {
+  padding: 100px 20px;
+}
+
+/* ===== TYPO ===== */
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 50px;
+}
+
+/* ===== GRID ===== */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 70px 16px;
+  }
+}
+
+/* ===== LEFT ===== */
+.form-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== RIGHT ===== */
+.result-card {
+  background: linear-gradient(135deg,#ffffff,#f8fbff);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 15px 40px rgba(19,135,184,0.08);
+}
+
+/* ===== TEXT ===== */
+.result-label {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+
+.result-number {
+  font-size: 52px;
+  font-weight: 800;
+  margin: 10px 0 20px;
+  color: #0ea5e9;
+
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+
+.result-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 20px 0;
+}
+
+/* ===== INPUT ===== */
+.input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+
+/* ===== BUTTON ===== */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: white;
+  border: none;
+  box-shadow: 0 10px 30px rgba(14,165,233,0.25);
+  background: linear-gradient(135deg,#0ea5e9,#0284c7);
+  font-weight: 600;
+}
+
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1387B8;
+  color: white;
+}
+
+/* ===== TRUST ===== */
+.trust {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 12px;
+}
+
+/* ===== LINKS ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* STEP 2 — spacing + button */
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  margin-top: 15px;
+  padding: 16px !important;
+  border-radius: 14px !important;
+  font-size: 15px;
+  box-shadow: 0 10px 30px rgba(14,165,233,0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* трохи повітря */
+.form-card {
+  padding: 28px !important;
+}
+
+/* LEFT як RESULT */
+
+.form-card {
+  padding: 32px !important;
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0;
+  min-height: 100%;
+}
+
+/* вирівнюємо висоту */
+.calc-grid {
+  align-items: stretch !important;
+}
+
+/* щоб обидва блоки тягнулись */
+.form-card,
+.result-card {
+  height: 100%;
+}
+
+.calc-grid:has(.form-card:only-child) {
+  grid-template-columns: 1fr;
+}
+
+/* EXPERT BLOCK */
+
+.expert-box {
+  background: linear-gradient(135deg,#ffffff,#f8fbff);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+}
+
+.expert-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.expert-box h3 {
+  margin-bottom: 10px;
+}
+
+.expert-box p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.expert-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.diamond-result {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1387B8;
+  margin: 15px 0;
+}
+
+.expert-box .btn-primary {
+  margin-bottom: 24px;
+}
+
+.expert-note {
+  margin-top: 8px;
+}
+
+.btn.btn-primary {
+  margin: 15px;
+}

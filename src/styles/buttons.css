@@ -1,0 +1,40 @@
+/* базова кнопка */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  height: 38px;
+  padding: 0 14px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+  border: none;
+
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* primary */
+.btn-primary {
+  background: linear-gradient(135deg,#0ea5e9,#0284c7);
+  color: white;
+}
+
+/* gold */
+.btn-gold {
+  background: linear-gradient(135deg,#d4af37,#b8961f);
+  color: #1e293b;
+}
+
+/* іконки */
+.pay-icon,
+.call-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+}

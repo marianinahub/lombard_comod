@@ -1,58 +1,114 @@
 import logo from "../assets/logo.svg";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+
+  // lock scroll
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
+
+  // scroll shadow + active section
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+
+      const sections = ["services","calculator","shop","contact"];
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop - 100;
+          if (window.scrollY >= top) {
+            setActive(id);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = () => setOpen(false);
+
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        background: "rgba(255,255,255,0.8)",
-        backdropFilter: "blur(10px)",
-        padding: "15px 20px",
-        zIndex: 100
-      }}
-    >
+    <>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <div className="container header-inner">
+
+          {/* LOGO */}
+          <a href="/">
+            <img src={logo} alt="КОМОД" className="logo" />
+          </a>
+
+          {/* NAV */}
+          <nav className="nav">
+            <a href="#services" className={active==="services" ? "active" : ""}>Послуги</a>
+            <a href="#calculator" className={active==="calculator" ? "active" : ""}>Калькулятор</a>
+            <a href="#shop" className={active==="shop" ? "active" : ""}>Магазин</a>
+            <a href="#contact" className={active==="contact" ? "active" : ""}>Контакти</a>
+          </nav>
+
+          {/* ACTIONS */}
+          <div className="header-actions">
+
+            <a
+              href="https://web.pawnexpert.com.ua:8011/#/pay/0179170615"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline pay-btn"
+            >
+              <span className="pay-icon">💳</span>
+              Оплата
+            </a>
+
+            <a href="tel:+380962697569" className="btn btn-primary call-btn">
+              <span className="call-icon">📞</span>
+              Дзвінок
+            </a>
+
+          </div>
+
+          {/* BURGER */}
+          <div className="burger" onClick={() => setOpen(true)}>
+            ☰
+          </div>
+
+        </div>
+      </header>
+
+      {/* OVERLAY */}
       <div
-        className="container"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
+        className={`mobile-menu ${open ? "active" : ""}`}
+        onClick={() => setOpen(false)}
       >
+        <div
+          className="mobile-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button className="close" onClick={() => setOpen(false)}>✕</button>
 
-        {/* ✅ ЛОГО */}
-        <img
-          src={logo}
-          alt="КОМОД"
-          style={{ width: "120px" }}
-        />
+          <a href="#services" onClick={handleClick}>Послуги</a>
+          <a href="#calculator" onClick={handleClick}>Калькулятор</a>
+          <a href="#shop" onClick={handleClick}>Магазин</a>
+          <a href="#contact" onClick={handleClick}>Контакти</a>
 
-        {/* NAV */}
-        <nav style={{ display: "flex", gap: "20px" }}>
-          <a href="#services">Послуги</a>
-          <a href="#shop">Магазин</a>
-          <a href="#calculator">Калькулятор</a>
-          <a href="#contact">Контакти</a>
-        </nav>
-
-        {/* ACTIONS */}
-        <div style={{ display: "flex", gap: "10px" }}>
           <a
             href="https://web.pawnexpert.com.ua:8011/#/pay/0179170615"
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            Оплатити договір
+            Оплатити
           </a>
 
           <a href="tel:+380962697569" className="btn btn-primary">
             Дзвінок
           </a>
-        </div>
 
+        </div>
       </div>
-    </header>
+    </>
   );
 }

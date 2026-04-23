@@ -7,7 +7,7 @@ export default function Filters({
   setSort
 }) {
   return (
-    <div className="card" style={{ marginBottom: "20px" }}>
+    <div className="filters">
 
       {/* 🔍 ПОШУК */}
       <input
@@ -17,27 +17,27 @@ export default function Filters({
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* 📂 КАТЕГОРІЇ */}
+      {/* 📦 КАТЕГОРІЇ */}
       <select
         className="input"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
         <option value="">Всі категорії</option>
-        <option value="phones">Телефони</option>
-        <option value="laptops">Ноутбуки</option>
+        <option value="tech">Техніка</option>
         <option value="gold">Золото</option>
+        <option value="silver">Срібло</option>
       </select>
 
-      {/* 💰 СОРТУВАННЯ */}
+      {/* 🔥 СТАН */}
       <select
         className="input"
         value={sort}
         onChange={(e) => setSort(e.target.value)}
       >
-        <option value="">Сортувати</option>
-        <option value="cheap">Дешеві</option>
-        <option value="expensive">Дорогі</option>
+        <option value="">Стан</option>
+        <option value="used">Б/У</option>
+        <option value="new">Нові</option>
       </select>
 
     </div>

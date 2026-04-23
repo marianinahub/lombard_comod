@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import Filters from "./Filters";
@@ -7,8 +7,11 @@ export default function Shop() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("");
+  const [visible, setVisible] = useState(8);
 
-  // 🔍 фільтрація
+  const ITEMS_STEP = 8;
+  const bottomRef = useRef(null);
+
   let filtered = products.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -17,88 +20,64 @@ export default function Shop() {
     filtered = filtered.filter((p) => p.category === category);
   }
 
-  // 💰 сортування
-  if (sort === "cheap") {
-    filtered = [...filtered].sort((a, b) => a.price - b.price);
+  if (sort) {
+    filtered = filtered.filter((p) => p.condition === sort);
   }
-  if (sort === "expensive") {
-    filtered = [...filtered].sort((a, b) => b.price - a.price);
-  }
+
+  const visibleItems = filtered.slice(0, visible);
 
   return (
     <section id="shop" className="section">
       <div className="container">
 
-        <h2 className="title">Магазин</h2>
+        <h2 className="title fade-in">Магазин</h2>
 
-        {/* 🔥 ФІЛЬТРИ */}
         <Filters
           search={search}
-          setSearch={setSearch}
+          setSearch={(v) => {
+            setSearch(v);
+            setVisible(8);
+          }}
           category={category}
-          setCategory={setCategory}
+          setCategory={(v) => {
+            setCategory(v);
+            setVisible(8);
+          }}
           sort={sort}
-          setSort={setSort}
+          setSort={(v) => {
+            setSort(v);
+            setVisible(8);
+          }}
         />
 
-        {/* 📦 ТОВАРИ */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
-            gap: "20px"
-          }}
-        >
-          {filtered.map((p) => (
+        <div className="shop-grid">
+          {visibleItems.map((p, i) => (
             <div
               key={p.id}
-              className="card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%"
-              }}
+              className="product-card fade-in"
+              style={{ animationDelay: `${i * 0.05}s` }}
             >
 
-              {/* IMAGE */}
-              <Link to={`/product/${p.id}`}>
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  style={{
-                    width: "100%",
-                    borderRadius: "12px",
-                    marginBottom: "10px",
-                    transition: "0.3s"
-                  }}
-                />
+              <Link to={`/product/${p.id}`} className="img-wrap">
+                <img src={p.img} alt={p.title} />
               </Link>
 
-              {/* CONTENT */}
-              <div style={{ flexGrow: 1 }}>
-                <h3 style={{ marginBottom: "5px" }}>
-                  {p.title}
-                </h3>
+              <div className="product-body">
+                <p className="condition">
+                  {p.condition === "used" ? "Б/У" : "Новий"}
+                </p>
 
-                <p
-                  style={{
-                    color: "#1387B8",
-                    marginBottom: "10px",
-                    fontWeight: 600
-                  }}
-                >
+                <h3 className="product-title">{p.title}</h3>
+
+                <p className="product-price">
                   {p.price.toLocaleString()} грн
                 </p>
               </div>
 
-              {/* BUTTON */}
               <Link
                 to={`/product/${p.id}`}
-                className="btn btn-outline"
-                style={{
-                  marginTop: "auto",
-                  textAlign: "center"
-                }}
+                className="tg-btn"
+                style={{ margin: "10px" }}
               >
                 Деталі
               </Link>
@@ -107,7 +86,44 @@ export default function Shop() {
           ))}
         </div>
 
-        {/* ❗ якщо нічого не знайдено */}
+        <div className="load-more" ref={bottomRef}>
+
+          {visible < filtered.length && (
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                setVisible((v) => v + ITEMS_STEP);
+                setTimeout(() => {
+                  bottomRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "end"
+                  });
+                }, 100);
+              }}
+            >
+              Показати ще
+            </button>
+          )}
+
+          {visible > ITEMS_STEP && (
+            <button
+              className="btn btn-outline"
+              onClick={() => {
+                setVisible(ITEMS_STEP);
+                setTimeout(() => {
+                  bottomRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "end"
+                  });
+                }, 100);
+              }}
+            >
+              Згорнути
+            </button>
+          )}
+
+        </div>
+
         {filtered.length === 0 && (
           <p style={{ textAlign: "center", marginTop: "20px" }}>
             Нічого не знайдено 😢

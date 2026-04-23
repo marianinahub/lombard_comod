@@ -1,0 +1,112 @@
+/* HERO */
+.hero {
+  position: relative;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+/* glow background */
+.hero-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  background: radial-gradient(circle, rgba(14,165,233,0.15), transparent);
+
+  top: -100px;
+  right: -100px;
+
+  filter: blur(80px);
+}
+
+/* layout */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* text */
+.hero-left h1 {
+  font-size: 46px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-left h1 span {
+  color: #0ea5e9;
+}
+
+.hero-left p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* buttons */
+.hero-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* card */
+.hero-card {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+
+  box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+
+  text-align: center;
+
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-card h2 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.hero-card span {
+  color: #0ea5e9;
+}
+
+/* animation */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* fade animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.fade-up.delay {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}

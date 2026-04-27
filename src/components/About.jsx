@@ -1,77 +1,85 @@
+import { useEffect } from "react";
+
 export default function About() {
+  useEffect(() => {
+    const el = document.querySelector(".about");
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("show");
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+  }, []);
+
   return (
-    <section id="about" className="section">
-      <div
-        className="container"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "40px",
-          alignItems: "center"
-        }}
-      >
+    <section id="about" className="section about">
+      <div className="container about-inner">
+
+        {/* IMAGE */}
+        <div className="about-image">
+          <img src="/about.jpg" alt="Ломбард Комод" />
+        </div>
 
         {/* TEXT */}
-        <div>
-          <h2 className="title" style={{ textAlign: "left" }}>
-            Ломбард КОМОД у Тернополі
-          </h2>
+        <div className="about-content">
+          <h2 className="title">Про нас</h2>
 
-          <p className="text-muted" style={{ marginBottom: "15px" }}>
-            Ми надаємо швидкі фінансові послуги під заставу золота,
-            техніки та автомобілів. Наша мета — допомогти вам отримати
-            кошти максимально швидко та без зайвих процедур.
-          </p>
-
-          <p className="text-muted" style={{ marginBottom: "15px" }}>
-            Оцінка проводиться чесно та прозоро, без прихованих умов.
-            Ви отримуєте гроші вже протягом 15 хвилин після звернення.
+          <p className="about-lead">
+            Надійний ломбард із вигідними умовами та швидким отриманням коштів
           </p>
 
           <p className="text-muted">
-            Ми гарантуємо конфіденційність та індивідуальний підхід
-            до кожного клієнта.
+            Ломбард «Комод» — це сучасний сервіс кредитування під заставу,
+            який допомагає отримати гроші швидко, без зайвих перевірок та
+            складних процедур.
           </p>
 
-          {/* FACTS */}
-          <div
-            style={{
-              display: "flex",
-              gap: "30px",
-              marginTop: "25px",
-              flexWrap: "wrap"
-            }}
-          >
-            <div>
-              <h3 style={{ color: "#1387B8" }}>10+</h3>
-              <p className="text-muted">років досвіду</p>
-            </div>
+          <p className="text-muted">
+            Ми спеціалізуємося на оцінці ювелірних виробів, техніки,
+            автомобілів та дорогоцінного каміння, пропонуючи клієнтам
+            максимально вигідні умови.
+          </p>
 
-            <div>
-              <h3 style={{ color: "#1387B8" }}>1000+</h3>
-              <p className="text-muted">клієнтів</p>
-            </div>
+          <p className="text-muted">
+            Наша мета — зробити процес отримання коштів простим,
+            прозорим і зручним. Ми гарантуємо чесну оцінку,
+            конфіденційність та надійне зберігання вашого майна.
+          </p>
 
+          {/* FEATURES */}
+          <div className="about-features">
+            <div>✔ Швидке оформлення</div>
+            <div>✔ Вигідні умови</div>
+            <div>✔ Без перевірок</div>
+            <div>✔ Конфіденційність</div>
+          </div>
+
+          {/* STATS */}
+          <div className="about-stats">
             <div>
-              <h3 style={{ color: "#1387B8" }}>15 хв</h3>
-              <p className="text-muted">оформлення</p>
+              <span>5 хв</span>
+              <p>Оцінка</p>
+            </div>
+            <div>
+              <span>0%</span>
+              <p>Зайвих перевірок</p>
+            </div>
+            <div>
+              <span>100%</span>
+              <p>Надійність</p>
             </div>
           </div>
-        </div>
 
-        {/* CARD */}
-        <div className="card">
-          <h3 style={{ marginBottom: "15px" }}>
-            Наші переваги
-          </h3>
-
-          <ul style={{ color: "#64748b", lineHeight: "1.8" }}>
-            <li>✔ Вигідні умови кредитування</li>
-            <li>✔ Швидка оцінка майна</li>
-            <li>✔ Без прихованих платежів</li>
-            <li>✔ Конфіденційність</li>
-            <li>✔ Зручне розташування у Тернополі</li>
-          </ul>
+          {/* CTA */}
+          <a href="#calculator" className="btn btn-primary about-btn">
+            Отримати гроші
+          </a>
         </div>
 
       </div>

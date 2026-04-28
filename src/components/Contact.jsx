@@ -5,6 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import Map from "./Map";
 
 const icon = new L.Icon({
   iconUrl,
@@ -22,9 +23,11 @@ export default function Contact() {
   const [showToast, setShowToast] = useState(false);
 
   const locations = [
-    { name: "Ломбард Комод — Центр", coords: [49.5535, 25.5948] },
-    { name: "Ломбард Комод — Східний", coords: [49.5500, 25.6100] },
-    { name: "Ломбард Комод — Дружба", coords: [49.5400, 25.5800] }
+    { name: "Відділення — 15 квітня 9",
+      coords: [49.56021626518944, 25.643396004891258] },
+    { name: "Відділення — Слівенська 3",
+      coords: [49.54921968560542, 25.62172246507542] },
+    { name: "Відділення — Злуки 8", coords: [49.56068897907157, 25.618684874265696] }
   ];
 
   const handleSubmit = async () => {
@@ -35,8 +38,8 @@ export default function Contact() {
 
     setLoading(true);
 
-    const TOKEN = "ТУТ_ТВОЙ_TOKEN";
-    const CHAT_ID = "ТУТ_CHAT_ID";
+const TOKEN = import.meta.env.VITE_TELEGRAM_TOKEN;
+const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
     const textMsg = `
 📩 Нова заявка з сайту
@@ -84,25 +87,9 @@ export default function Contact() {
         <div className="contact-grid">
 
           {/* MAP */}
-          <div className="contact-map">
-            <MapContainer
-              center={[49.5535, 25.5948]}
-              zoom={13}
-              style={{
-                height: "380px",
-                width: "100%",
-                borderRadius: "20px"
-              }}
-            >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-              {locations.map((loc, i) => (
-                <Marker key={i} position={loc.coords} icon={icon}>
-                  <Popup>{loc.name}</Popup>
-                </Marker>
-              ))}
-            </MapContainer>
-          </div>
+<div className="contact-map">
+  <Map />
+</div>
 
           {/* FORM */}
           <div className="contact-card">

@@ -1,79 +1,92 @@
 import logo from "../assets/logo.svg";
+import {
+  FaPhone,
+  FaMapMarkerAlt,
+  FaTelegram,
+  FaClock
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#f8fafc",
-        padding: "60px 20px 30px",
-        marginTop: "60px"
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))",
-          gap: "30px",
-          textAlign: "left"
-        }}
-      >
+    <footer className="footer">
+      <div className="container footer-grid">
 
         {/* БРЕНД */}
-        <div>
-           <img
-          src={logo}
-          alt="КОМОД"
-          style={{ width: "120px" }}
-        />
+        <div className="footer-brand">
+          <img src={logo} alt="КОМОД" />
 
-          <p style={{ color: "#64748b" }}>
-            Ломбард у Тернополі — швидко, надійно, вигідно
+          <p>
+            Ломбард «Комод» — швидкі гроші під заставу у Тернополі.
           </p>
         </div>
 
-        {/* НАВІГАЦІЯ */}
+        {/* МЕНЮ */}
         <div>
-          <h4 style={{ marginBottom: "10px" }}>Меню</h4>
+          <h4>Меню</h4>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div className="footer-links">
             <a href="#services">Послуги</a>
+            <a href="#about">Про нас</a>
             <a href="#calculator">Калькулятор</a>
             <a href="#contact">Контакти</a>
           </div>
         </div>
 
-        {/* КОНТАКТИ */}
+        {/* ВІДДІЛЕННЯ */}
         <div>
-          <h4 style={{ marginBottom: "10px" }}>Контакти</h4>
+          <h4>Відділення</h4>
 
-          <p>м. Тернопіль</p>
-          <a href="tel:+380XXXXXXXXX">+380 XXX XX XX</a>
+          <div className="footer-contacts">
+            <div>
+              <FaMapMarkerAlt />
+              <span>15 квітня 9</span>
+            </div>
+
+            <div>
+              <FaMapMarkerAlt />
+              <span>Слівенська 3</span>
+            </div>
+
+            <div>
+              <FaMapMarkerAlt />
+              <span>Злуки 8</span>
+            </div>
+          </div>
         </div>
 
-        {/* CTA */}
+        {/* КОНТАКТИ + CTA */}
         <div>
-          <h4 style={{ marginBottom: "10px" }}>Зв’язок</h4>
+          <h4>Зв’язок</h4>
 
-          <button className="btn btn-primary">
-            Отримати консультацію
-          </button>
+          <div className="footer-contacts">
+            <div>
+              <FaPhone />
+              <a href="tel:+380962697569">+380 96 269 75 69</a>
+            </div>
+
+            <div>
+              <FaClock />
+              <span>Щодня 09:00–19:00</span>
+            </div>
+          </div>
+          <a
+            href="https://t.me/mariianina"
+            target="_blank"
+            className="footer-telegram"
+          >
+            <FaTelegram />
+            Написати в Telegram
+          </a>
         </div>
 
       </div>
 
       {/* ЛІНІЯ */}
-      <div
-        style={{
-          height: "1px",
-          background: "#e2e8f0",
-          margin: "30px 0"
-        }}
-      />
+      <div className="footer-divider" />
 
       {/* COPYRIGHT */}
-      <div style={{ textAlign: "center", color: "#94a3b8", fontSize: "14px" }}>
-        © {new Date().getFullYear()} КОМОД. Всі права захищені.
+      <div className="footer-bottom">
+        © {new Date().getFullYear()} Ломбард «Комод». Всі права захищені.
       </div>
     </footer>
   );

@@ -15,6 +15,8 @@ import "./styles/advantages.css";
 import "./styles/about.css";
 import "./styles/reviews.css";
 import "./styles/contact.css";
+import "./styles/footer.css";
+import "./styles/filters.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

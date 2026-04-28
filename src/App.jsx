@@ -9,7 +9,6 @@ import About from "./components/About";
 import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import CallButton from "./components/CallButton";
 import Shop from "./components/Shop";
 import ProductPage from "./pages/ProductPage";
 
@@ -60,7 +59,6 @@ export default function App() {
       </Routes>
 
       <Footer />
-      <CallButton />
     </>
   );
 }

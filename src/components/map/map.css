@@ -1,0 +1,179 @@
+/* ===== WRAPPER ===== */
+.map-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== MAP FULL ===== */
+.map,
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* 🔥 прибираємо рамки */
+.map-wrapper {
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* ===== USER DOT ===== */
+.leaflet-marker-icon[src*="64113"] {
+  filter: drop-shadow(0 0 8px #0b5ed7);
+}
+
+/* ===== ACTIVE MARKER ===== */
+.marker-active {
+  filter: drop-shadow(0 0 15px rgba(11,94,215,0.9));
+  transform: scale(1.1);
+}
+
+/* ===== POPUP ===== */
+.map-popup a {
+  display: inline-block;
+  margin-top: 6px;
+  color: #93c5fd;
+  font-size: 12px;
+}
+
+/* ===== LIST OVER MAP ===== */
+.map-list {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 260px;
+  z-index: 10;
+}
+
+/* ===== CARD ===== */
+.map-card {
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  color: #fff;
+  font-size: 13px;
+
+  cursor: pointer;
+  transition: 0.25s;
+
+  border: 1px solid transparent;
+}
+
+/* hover */
+.map-card:hover {
+  transform: translateY(-2px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* active */
+.map-card.active {
+  background: #0b5ed7;
+}
+
+/* nearest */
+.map-card.nearest {
+  border: 1px solid #0b5ed7;
+}
+
+/* top */
+.map-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-title {
+  font-weight: 500;
+}
+
+.badge {
+  background: #22c55e;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.map-distance {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+.map-route {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.map-route:hover {
+  text-decoration: underline;
+}
+
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+@media (max-width: 768px) {
+
+  /* карта стає блоком */
+  .map-wrapper {
+    position: relative;
+    height: 260px;
+  }
+
+  /* список вниз */
+  .map-list {
+    position: static;
+    width: 100%;
+
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+  }
+
+  .map-card {
+    min-width: 200px;
+  }
+}
+
+.map-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.map,
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* список */
+.map-list {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .map-wrapper {
+    position: relative;
+    height: 260px;
+  }
+
+  .map-list {
+    position: static;
+  }
+}

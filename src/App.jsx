@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Calculator from "./components/Calculator";
-import Advantages from "./components/Advantages";
-import About from "./components/About";
-import Reviews from "./components/Reviews";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Shop from "./components/Shop";
-import ProductPage from "./pages/ProductPage";
+import Header from "./components/header/Header";
+import Hero from "./components/hero/Hero";
+import Services from "./components/services/Services";
+import Calculator from "./components/calculator/Calculator";
+import Advantages from "./components/advantages/Advantages";
+import About from "./components/about/About";
+import Reviews from "./components/reviews/Reviews";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
+import Shop from "./components/shop/Shop";
+import ProductPage from "./components/pages/ProductPage";
 
 function Home() {
   return (

@@ -1,0 +1,187 @@
+/* ===== SERVICES PREMIUM ===== */
+.services {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* легкий фон glow */
+.services::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(11,94,215,0.15), transparent);
+  top: -100px;
+  left: -100px;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* ===== GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  position: relative;
+
+  padding: 32px 24px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* glow border */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(120deg, transparent, rgba(11,94,215,0.4), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* hover */
+.service-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 60px rgba(11,94,215,0.15);
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== ICON ===== */
+.icon-box {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #0b5ed7, #3b82f6);
+  color: white;
+
+  font-size: 24px;
+
+  box-shadow: 0 10px 25px rgba(11,94,215,0.3);
+
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .icon-box {
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* ===== TEXT ===== */
+.service-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.text-muted {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ===== ANIMATION ===== */
+.service-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .services {
+    padding: 80px 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .services-grid {
+    gap: 18px;
+  }
+
+  .service-card {
+    padding: 24px 18px;
+  }
+}
+
+.service-card:first-child {
+  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  color: white;
+}
+
+.service-card:first-child .text-muted {
+  color: rgba(255,255,255,0.8);
+}
+
+.services-grid {
+  display: grid;
+  gap: 28px;
+}
+
+/* 📱 мобілка — 1 колонка */
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 📲 планшет — 2 колонки */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 💻 десктоп — 3 колонки */
+@media (min-width: 1025px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

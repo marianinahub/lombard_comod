@@ -1,0 +1,569 @@
+/* ===== SECTION ===== */
+.contact {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+}
+
+/* ===== BACKGROUND MAP ===== */
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.35)
+  );
+}
+
+/* ===== MAIN GRID ===== */
+.contact-inner {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ===== LEFT ===== */
+.contact-left h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.contact-left p {
+  color: #cbd5f5;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+/* ===== BENEFITS ===== */
+.contact-benefits {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.contact-benefits div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== WORKTIME ===== */
+.contact-worktime {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 12px 16px;
+  border-radius: 12px;
+
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  width: fit-content;
+}
+
+.contact-worktime.open {
+  border: 1px solid rgba(34,197,94,0.5);
+}
+
+.contact-worktime.closed {
+  border: 1px solid rgba(239,68,68,0.5);
+}
+
+.work-main {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.work-sub {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+/* ===== FORM CARD ===== */
+.contact-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+
+  padding: 30px;
+  border-radius: 20px;
+
+  box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== TITLE ===== */
+.contact-card h3 {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* ===== INPUT ===== */
+.contact-card input {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 14px;
+
+  outline: none;
+  transition: 0.25s;
+}
+
+.contact-card input:focus {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ===== BUTTON ===== */
+.contact-card button {
+  margin-top: 10px;
+  padding: 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  color: #fff;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.contact-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+}
+
+.contact-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== HINT ===== */
+.contact-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+}
+
+/* ===== MAP ===== */
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #0b5ed7;
+  color: #fff;
+
+  padding: 14px 24px;
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE */
+/* ========================= */
+@media (max-width: 768px) {
+
+  .contact {
+    padding: 70px 0;
+  }
+
+  /* 🔥 прибираємо overlay */
+  .contact-bg {
+    position: relative;
+    height: 240px;
+  }
+
+  .contact-bg::after {
+    display: none;
+  }
+
+  /* 🔥 вертикальний layout */
+  .contact-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* порядок */
+  .contact-left { order: 1; }
+  .contact-card { order: 2; }
+  .contact-bg { order: 3; }
+
+  /* ===== TEXT ===== */
+  .contact-left h2 {
+    font-size: 26px;
+  }
+
+  /* ===== FORM ===== */
+  .contact-card {
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(16px);
+
+    padding: 20px;
+    border-radius: 16px;
+
+    width: 100%;
+  }
+
+  .contact-card input {
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* ===== MAP ===== */
+  .map {
+    height: 240px;
+  }
+
+  /* 🔥 повітря */
+  .contact-inner {
+    gap: 28px;
+  }
+
+}
+
+/* ===== FORM POSITION FIX ===== */
+.contact-card {
+  position: relative;
+  z-index: 3;
+
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(18px);
+
+  padding: 30px;
+  border-radius: 20px;
+
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  transform: translateY(-40px); /* 🔥 піднімаємо над картою */
+}
+
+/* легкий glow */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+
+  .contact-card {
+    transform: translateY(-60px); /* 🔥 накладається на карту */
+    margin-bottom: -40px;
+
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(14px);
+  }
+
+  .contact-bg {
+    height: 260px;
+  }
+
+}
+
+.contact-worktime {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+  border-radius: 14px;
+
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.08);
+
+  color: #fff;
+  width: fit-content;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contact-worktime svg {
+  font-size: 18px;
+}
+
+/* СТАНИ */
+.contact-worktime.open {
+  border: 1px solid rgba(34,197,94,0.6);
+}
+
+.contact-worktime.closed {
+  border: 1px solid rgba(239,68,68,0.6);
+}
+
+/* текст */
+.work-main {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.work-sub {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+/* 🔥 маленький індикатор */
+.contact-worktime::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.contact-worktime.open::after {
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+.contact-worktime.closed::after {
+  background: #ef4444;
+}
+
+.contact {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* карта фон */
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+/* контент */
+.contact-inner {
+  position: relative;
+  z-index: 3;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* колонка */
+.contact-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* графік */
+.contact-worktime {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.contact-worktime.open {
+  border-left: 3px solid #22c55e;
+}
+
+.contact-worktime.closed {
+  border-left: 3px solid #ef4444;
+}
+
+/* форма */
+.contact-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+
+  padding: 24px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 320px;
+}
+
+.contact-card input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.contact-card button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #0b5ed7;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0b5ed7;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* мобілка */
+@media (max-width: 768px) {
+
+  .contact {
+    padding: 0;
+  }
+
+  .contact-inner {
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+}
+
+.contact-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 340px; /* 🔥 обмеження */
+}
+
+.contact-card {
+  width: 100%; /* 🔥 замість 320px */
+}
+
+.contact-worktime {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.1);
+}
+
+.contact-worktime,
+.contact-card {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+
+  .contact-form-wrap {
+    max-width: 100%;
+  }
+
+}
+
+.contact-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-desc {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.contact-card {
+  margin-top: 30px;
+}

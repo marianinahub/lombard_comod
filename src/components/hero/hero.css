@@ -1,0 +1,467 @@
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: #f4f8ff;
+  overflow: hidden;
+}
+
+/* ===== WAVE ===== */
+.hero-wave {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  transform: scaleX(-1);
+  z-index: 1;
+}
+
+/* ===== CONTAINER ===== */
+.hero-container {
+  position: relative;
+  z-index: 2;
+  padding: 40px 16px;
+}
+
+/* ===== MOBILE LAYOUT ===== */
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+/* ===== IMAGE ===== */
+.hero-image {
+  order: -1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 280px;
+
+  transform: none;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+/* ===== TEXT ===== */
+.hero-left {
+  max-width: 100%;
+}
+
+/* title */
+.hero-left h1 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.1;
+
+  background: linear-gradient(135deg, #0b5ed7, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* text */
+.hero-left p {
+  font-size: 15px;
+  color: #334155;
+  margin: 16px 0 24px;
+}
+
+/* ===== BUTTONS ===== */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* base */
+.btn {
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.25s;
+}
+
+/* primary */
+.btn-primary {
+  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  color: white;
+}
+
+/* glass */
+.btn-glass {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.9);
+  color: #0b5ed7;
+}
+
+/* ===== ICON ===== */
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(11,94,215,0.1);
+}
+
+/* ===== ARROWS ===== */
+.btn-arrow {
+  width: 16px;
+  transition: 0.25s;
+}
+
+.btn-arrow.left {
+  transform: translateX(-3px);
+}
+
+.btn-arrow.right {
+  transform: translateX(3px);
+}
+
+/* hover (тільки для десктопу) */
+@media (hover: hover) {
+  .btn-primary:hover .btn-arrow.left {
+    transform: translateX(0);
+  }
+
+  .btn-primary:hover .btn-arrow.right {
+    transform: translateX(0);
+  }
+}
+
+/* ===== TRUST ===== */
+.hero-trust {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ========================= */
+/* ===== TABLET (768px+) === */
+/* ========================= */
+
+@media (min-width: 768px) {
+  .hero-container {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-main {
+    text-align: left;
+  }
+
+  .hero-left h1 {
+    font-size: 48px;
+  }
+
+  .hero-left p {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+  }
+}
+
+/* ========================= */
+/* ===== DESKTOP (1024+) === */
+/* ========================= */
+
+@media (min-width: 1024px) {
+  .hero-main {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .hero-image {
+    order: 0;
+  }
+
+  .hero-image img {
+    max-width: 520px;
+    transform: rotate(-2deg);
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.2));
+  }
+
+  .hero-left h1 {
+    font-size: 64px;
+  }
+
+  .btn:hover {
+    transform: translateY(-4px);
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .hero {
+    background: #f4f8ff;
+  }
+
+  .hero-image {
+    display: flex;
+  }
+
+  .hero-wave {
+    display: block;
+  }
+}
+
+.hero-left {
+  padding: 10px 5px;
+}
+
+.hero-left h1 {
+  font-size: 28px;
+}
+
+.hero-left p {
+  font-size: 14px;
+}
+
+/* ========================= */
+/* ===== MOBILE TOP UI ===== */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+ 
+  /* контейнер */
+  .hero-container {
+    padding: 20px 16px 100px; /* місце під кнопку */
+  }
+
+  /* текст */
+  .hero-left h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-left p {
+    font-size: 14px;
+    margin: 12px 0 20px;
+  }
+
+  /* кнопки */
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .btn {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  /* trust */
+  .hero-trust {
+    font-size: 12px;
+    margin-top: 14px;
+  }
+}
+
+.hero-actions {
+  width: 100%;
+}
+
+.hero-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0 20px;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-arrow {
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  height: 64px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-image: url("/src/assets/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+
+    position: relative;
+  }
+
+  /* ховаємо img */
+  .hero-image {
+    display: none;
+  }
+
+  /* ховаємо хвилю */
+  .hero-wave {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero::before {
+    content: "";
+    position: absolute;
+    background: rgba(250, 249, 249, 0.45);
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-main {
+    justify-content: flex-end; /* тягне вниз */
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 20px 16px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-left {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.hero-left h1 {
+  margin-bottom: 18px;
+}
+
+.hero-left p {
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  margin-top: 10px;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* 🔥 головне */
+}
+
+@media (max-width: 768px) {
+  .hero-left {
+    gap: 14px;
+  }
+
+  .hero-left p {
+    margin-bottom: 20px;
+  }
+}
+
+/* ===== TYPO SYSTEM ===== */
+:root {
+  --hero-title-size: clamp(28px, 6vw, 64px);
+  --hero-text-size: clamp(14px, 2.5vw, 18px);
+
+  --hero-title-color: #0f172a;
+  --hero-text-color: #475569;
+
+  --hero-line-height-tight: 1.1;
+  --hero-line-height: 1.6;
+}
+
+/* ===== HERO TEXT BLOCK ===== */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 🔥 ритм */
+}
+
+/* ===== TITLE ===== */
+.hero-left h1 {
+  font-size: var(--hero-title-size);
+  font-weight: 800;
+  line-height: var(--hero-line-height-tight);
+
+  letter-spacing: -0.5px;
+
+  color: var(--hero-title-color);
+
+  /* градієнт (преміум ефект) */
+  background: linear-gradient(135deg, #0b5ed7, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== DESCRIPTION ===== */
+.hero-left p {
+  font-size: var(--hero-text-size);
+  line-height: var(--hero-line-height);
+
+  color: var(--hero-text-color);
+
+  max-width: 480px;
+}
+
+/* ===== TRUST ===== */
+.hero-trust {
+  font-size: 13px;
+  color: #64748b;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .hero-left {
+    gap: 16px;
+  }
+
+  .hero-left h1 {
+    letter-spacing: -0.3px;
+  }
+
+  .hero-left p {
+    font-size: 14px;
+  }
+}

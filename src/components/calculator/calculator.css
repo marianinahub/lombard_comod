@@ -1,0 +1,386 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+.section {
+  padding: 50px 16px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.container {
+  width: 100%;
+}
+
+/* ===== TITLE ===== */
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #0f172a;
+}
+
+/* ===== MAIN CARD ===== */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+/* ===== TABS ===== */
+.calc-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.calc-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.calc-tab {
+  flex: 0 0 auto;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #f1f5f9;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.calc-tab.active {
+  background: #1387B8;
+  color: white;
+}
+
+/* ===== GRID ===== */
+.calc-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== FORM CARD ===== */
+.form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+/* ===== RESULT CARD (БІЛИЙ PREMIUM) ===== */
+.result-card {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* ===== INPUT ===== */
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1387B8;
+  box-shadow: 0 0 0 3px rgba(19,135,184,0.15);
+}
+
+/* ===== RANGE ===== */
+input[type="range"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1387B8, #0ea5e9);
+  color: white;
+}
+
+/* ===== RESULT ===== */
+.result-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.result-number {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 12px 0 18px;
+
+  background: linear-gradient(135deg, #1387B8, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transition: 0.3s;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.result-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 15px 0;
+}
+
+/* ===== TRUST ===== */
+.trust {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #64748b;
+}
+
+/* ===== EXPERT ===== */
+.expert-box {
+  text-align: center;
+}
+
+.expert-icon {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.expert-note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+/* ========================= */
+/* ===== TABLET ===== */
+/* ========================= */
+@media (min-width: 768px) {
+  .section {
+    padding: 70px 20px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .calc-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+    overflow: visible;
+  }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .result-number {
+    font-size: 32px;
+  }
+}
+
+/* ========================= */
+/* ===== DESKTOP ===== */
+/* ========================= */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1100px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .card {
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .form-card,
+  .result-card {
+    padding: 25px;
+  }
+
+  .btn {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .result-number {
+    font-size: 36px;
+  }
+}
+
+/* ===== MOBILE COMPACT MODE ===== */
+@media (max-width: 768px) {
+
+  .section {
+    padding: 30px 12px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  /* GRID */
+  .calc-grid {
+    gap: 12px;
+  }
+
+  /* FORM */
+  .form-card {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  /* RESULT */
+  .result-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* INPUTS */
+  .input {
+    padding: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  /* RANGE */
+  input[type="range"] {
+    margin-bottom: 6px;
+  }
+
+  /* LABELS */
+  label {
+    font-size: 12px;
+  }
+
+  /* BUTTON */
+  .btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  /* RESULT TEXT */
+  .result-number {
+    font-size: 22px;
+    margin: 8px 0 12px;
+  }
+
+  .result-row {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .result-label {
+    font-size: 12px;
+  }
+
+  .trust {
+    font-size: 11px;
+  }
+}
+
+/* ===== STICKY RESULT MOBILE ===== */
+@media (max-width: 768px) {
+
+  .result-card {
+    position: sticky;
+    bottom: 10px;
+    z-index: 10;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .calc-tabs {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .calc-tab {
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .expert-note {
+    display: none;
+  }
+
+  .result-divider {
+    margin: 10px 0;
+  }
+}
+
+.calc-lead {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}

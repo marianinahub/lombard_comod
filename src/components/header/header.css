@@ -1,0 +1,413 @@
+/* ===== ROOT ===== */
+:root {
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --gold-1: #fde68a;
+  --gold-2: #facc15;
+  --gold-3: #eab308;
+
+  --blue-1: #2563eb;
+  --blue-2: #1d4ed8;
+
+  --radius: 12px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  /* 🔥 тепліший фон під золото */
+  background: rgba(255, 251, 235, 0.7);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(234,179,8,0.15);
+
+  transition: all 0.25s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 251, 235, 0.85);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+/* ===== LAYOUT ===== */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  width: 100px;
+}
+
+/* ===== NAV ===== */
+.nav {
+  display: none;
+}
+
+.nav a {
+  position: relative;
+  font-size: 15px; /* 🔥 трохи більший */
+  font-weight: 600; /* 🔥 сильніше */
+  color: var(--text);
+  text-decoration: none;
+
+  padding: 6px 4px;
+
+  transition: all 0.2s ease;
+}
+
+/* 🔥 золотий underline */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--gold-2),
+    var(--gold-3)
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav a:hover {
+  color: #000;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  transform: scaleX(1);
+}
+
+.nav a.active {
+  color: #000;
+}
+
+/* ===== ACTIONS ===== */
+.header-actions {
+  display: none;
+}
+
+/* ===== BUTTON BASE ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  height: 40px;
+  padding: 0 16px;
+
+  border-radius: var(--radius);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+/* ===== GOLD CTA ===== */
+.btn-gold-premium {
+  background: linear-gradient(
+    135deg,
+    var(--gold-1),
+    var(--gold-2),
+    var(--gold-3)
+  );
+
+  color: #1e293b;
+
+  box-shadow:
+    0 6px 16px rgba(234,179,8,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.btn-gold-premium:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(234,179,8,0.3);
+}
+
+/* ===== CALL BUTTON ===== */
+.btn-call {
+  background: linear-gradient(
+    135deg,
+    var(--blue-1),
+    var(--blue-2)
+  );
+
+  color: white;
+
+  box-shadow:
+    0 6px 16px rgba(37,99,235,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn-call:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37,99,235,0.3);
+}
+
+/* ===== BURGER ===== */
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(18px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-content {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 85%;
+  max-width: 320px;
+  height: 100%;
+
+  background: #fff;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  transform: translateX(100%);
+  transition: 0.3s ease;
+
+  box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+}
+
+.mobile-menu.active .mobile-content {
+  transform: translateX(0);
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+
+  .header-inner {
+    height: 72px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 26px;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .burger {
+    display: none;
+  }
+}
+
+/* ===== MOBILE OVERLAY ===== */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15,23,42,0.35);
+  backdrop-filter: blur(20px);
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-content {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 85%;
+  max-width: 340px;
+  height: 100%;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8fafc
+  );
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+
+  box-shadow: -20px 0 60px rgba(0,0,0,0.12);
+}
+
+.mobile-menu.active .mobile-content {
+  transform: translateX(0);
+}
+
+.mobile-content a {
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #0f172a;
+  text-decoration: none;
+
+  padding: 12px 8px;
+  border-radius: 10px;
+
+  transition: all 0.2s ease;
+}
+
+/* hover/tap */
+.mobile-content a:active {
+  background: rgba(0,0,0,0.05);
+}
+
+.mobile-content .btn {
+  width: 100%;
+  height: 48px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  border-radius: 14px;
+}
+
+/* початковий стан */
+.mobile-content a {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+/* активний */
+.mobile-menu.active .mobile-content a {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* stagger */
+.mobile-menu.active .mobile-content a:nth-child(2) { transition-delay: 0.05s; }
+.mobile-menu.active .mobile-content a:nth-child(3) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-content a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-menu.active .mobile-content a:nth-child(5) { transition-delay: 0.2s; }
+
+/* ===== BURGER (PREMIUM) ===== */
+.burger {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.03);
+  backdrop-filter: blur(6px);
+
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.burger:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* lines */
+.burger span {
+  display: block;
+
+  width: 20px;
+  height: 2px;
+
+  margin: 0 auto;
+
+  background: #0f172a;
+
+  border-radius: 2px;
+
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ===== OPEN STATE (X) ===== */
+.burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== ACTIVE (tap feel) ===== */
+.burger:active {
+  transform: scale(0.9);
+}
+
+.burger span {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+}
+
+@media (min-width: 1024px) {
+  .burger {
+    display: none;
+  }
+}

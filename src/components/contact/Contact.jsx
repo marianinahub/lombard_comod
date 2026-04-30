@@ -123,7 +123,7 @@ export default function Contact() {
 
       </div>
 
-      {showToast && <div className="toast">OK</div>}
+      {showToast && <div className="toast">Повідомлення надіслано</div>}
     </section>
   );
 }

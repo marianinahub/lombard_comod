@@ -20,7 +20,7 @@ export default function Footer() {
          <a href="#home">
             <img src={logo} alt="КОМОД" />
           </a>
-          <p>Швидкі гроші під заставу у Тернополі</p>
+          <p>Грошей не вистачає? Ломбард виручає!</p>
         </div>
 
         {/* NAV */}

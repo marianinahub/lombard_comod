@@ -411,3 +411,61 @@
     display: none;
   }
 }
+
+/* ===== CLOSE BUTTON (PREMIUM X) ===== */
+.close-btn {
+  position: relative;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.05);
+
+  cursor: pointer;
+  border: none;
+
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.close-btn:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+/* lines */
+.close-btn span {
+  position: absolute;
+
+  width: 16px;
+  height: 2px;
+
+  background: #0f172a;
+
+  border-radius: 2px;
+
+  transition: all 0.25s ease;
+}
+
+/* формуємо X */
+.close-btn span:first-child {
+  transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* active (tap feel) */
+.close-btn:active {
+  transform: scale(0.9);
+}
+
+.close-btn span {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}

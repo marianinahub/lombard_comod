@@ -3,12 +3,12 @@ import "./about.css";
 
 export default function About() {
   const branches = [
-    { name: "Центральне відділення", img: "/src/assets/kvitna.webp" },
-    { name: "Відділення Озерна", img: "/branch2.jpg" },
-    { name: "Відділення Дружба", img: "/branch3.jpg" },
+    { name: "Відділення м.Тернопіль, вул 15 квітня 9", img: "/src/assets/kvitna.jpg" },
+    { name: "Відділення м.Збараж, м-н І.Франка,8", img: "/src/assets/zbaraz.jpg" },
+    { name: "Відділення м.Підволочиськ, вул Шевченка, 4а", img: "/src/assets/pidvolochisk.jpg" },
   ];
 
-  const [activeImage, setActiveImage] = useState("/about.jpg");
+  const [activeImage, setActiveImage] = useState("/src/assets/kvitna.jpg");
 
   useEffect(() => {
     const el = document.querySelector(".about");

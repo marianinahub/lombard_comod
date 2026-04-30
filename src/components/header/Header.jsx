@@ -105,7 +105,10 @@ export default function Header() {
       <div className={`mobile-menu ${open ? "active" : ""}`}>
         <div className="mobile-content">
 
-          <button className="close" onClick={() => setOpen(false)}>✕</button>
+          <button className="close-btn" onClick={() => setOpen(false)} aria-label="Закрити меню">
+  <span></span>
+  <span></span>
+</button>
 
           <a href="#services" onClick={handleClick}>Послуги</a>
           <a href="#calculator" onClick={handleClick}>Калькулятор</a>

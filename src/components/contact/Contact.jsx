@@ -16,7 +16,8 @@ export default function Contact() {
     3: { open: 9, close: 19 },
     4: { open: 9, close: 19 },
     5: { open: 9, close: 19 },
-    6: { open: 9, close: 19 }
+    6: { open: 9, close: 19 },
+    7: { open: 9, close: 19 }
   };
 
   const getWorkStatus = () => {
@@ -27,7 +28,7 @@ export default function Contact() {
     const today = schedule[day];
 
     if (!today) {
-      return { text: "Зачинено", sub: "Пн–Сб", open: false };
+      return { text: "Зачинено", sub: "Пн–Нд", open: false };
     }
 
     const { open, close } = today;

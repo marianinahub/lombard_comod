@@ -1,4 +1,4 @@
-name: Deploy via SSH
+name: Deploy via FTP
 
 on:
   push:
@@ -24,11 +24,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload to server
-        uses: appleboy/scp-action@v0.1.7
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          source: "dist/*"
-          target: "/home4/lombard9/public_html/"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: public_html/

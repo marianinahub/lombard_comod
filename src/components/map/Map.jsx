@@ -125,7 +125,9 @@ export default function Map() {
         scrollWheelZoom={false}
         className="map"
       >
-        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+        <TileLayer
+  url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`}
+/>
 
         <FlyTo coords={active !== null ? locations[active].coords : null} />
 

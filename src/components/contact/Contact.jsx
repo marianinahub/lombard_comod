@@ -86,7 +86,7 @@ export default function Contact() {
             <FaClock />
             <div>
               <div className="work-main">{work.text}</div>
-              <div className="work-sub"><p>09:00–19:00</p></div>
+              <div className="work-sub"><p>{work.sub}</p></div>
             </div>
           </div>
 

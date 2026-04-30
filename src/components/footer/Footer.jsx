@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="footer-contacts">
           <div>
             <FaPhone />
-            <a href="tel:+380962697569">+380 96 269 75 69</a>
+            <a href="tel:+380636121217">+380 63 612 12 17</a>
           </div>
 
           <div>

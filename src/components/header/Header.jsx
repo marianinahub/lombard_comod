@@ -81,7 +81,7 @@ export default function Header() {
               💳 Оплата
             </a>
 
-            <a href="tel:+380962697569" className="btn btn-call">
+            <a href="tel:+380636121217" className="btn btn-call">
               <FiPhone size={18} /> Дзвінок
             </a>
 
@@ -124,7 +124,7 @@ export default function Header() {
           </a>
 
           <a
-            href="tel:+380962697569"
+            href="tel:+380636121217"
             className="btn btn-call"
             onClick={handleClick}
           >

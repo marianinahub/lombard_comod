@@ -11,7 +11,7 @@ export default function About() {
   { name: "Відділення м.Підволочиськ, вул Шевченка, 4а", img: pidvolochisk },
 ];
 
-  const [activeImage, setActiveImage] = useState("../../assets/kvitna.jpg");
+ const [activeImage, setActiveImage] = useState(kvitna);
 
   useEffect(() => {
     const el = document.querySelector(".about");

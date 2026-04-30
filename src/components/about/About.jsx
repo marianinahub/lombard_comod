@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import "./about.css";
+import kvitna from "../../assets/kvitna.jpg";
+import zbaraz from "../../assets/zbaraz.jpg";
+import pidvolochisk from "../../assets/pidvolochisk.jpg";
 
 export default function About() {
   const branches = [
-    { name: "Відділення м.Тернопіль, вул 15 квітня 9", img: "../../assets/kvitna.jpg" },
-    { name: "Відділення м.Збараж, м-н І.Франка,8", img: "../../assets/zbaraz.jpg" },
-    { name: "Відділення м.Підволочиськ, вул Шевченка, 4а", img: "../../assets/pidvolochisk.jpg" },
-  ];
+  { name: "Відділення м.Тернопіль, вул 15 квітня 9", img: kvitna },
+  { name: "Відділення м.Збараж, м-н І.Франка,8", img: zbaraz },
+  { name: "Відділення м.Підволочиськ, вул Шевченка, 4а", img: pidvolochisk },
+];
 
   const [activeImage, setActiveImage] = useState("../../assets/kvitna.jpg");
 

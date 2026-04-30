@@ -16,9 +16,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-        node-version: 20
+          node-version: 22
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm install
 
       - name: Build
@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/*"
-          target: "public_html/"
+          target: "/home4/lombard9/public_html/"

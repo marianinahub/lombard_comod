@@ -11,12 +11,12 @@ export default function Contact() {
 
   const schedule = {
     0: null,
-    1: { open: 9, close: 20 },
-    2: { open: 9, close: 20 },
-    3: { open: 9, close: 20 },
-    4: { open: 9, close: 20 },
-    5: { open: 9, close: 20 },
-    6: { open: 10, close: 18 }
+    1: { open: 9, close: 19 },
+    2: { open: 9, close: 19 },
+    3: { open: 9, close: 19 },
+    4: { open: 9, close: 19 },
+    5: { open: 9, close: 19 },
+    6: { open: 9, close: 19 }
   };
 
   const getWorkStatus = () => {
